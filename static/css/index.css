@@ -129,6 +129,11 @@ a {
   color: var(--text-muted);
 }
 
+.metrics-note {
+  margin: 0.6rem 0 0.9rem;
+  color: var(--text-muted);
+}
+
 .table-wrap {
   width: 100%;
   overflow-x: auto;
@@ -210,6 +215,42 @@ a {
 
 .metrics-card {
   grid-column: span 2;
+}
+
+.subtable-title {
+  margin: 0 0 0.45rem;
+  color: #1d2d4a;
+  font-size: 0.98rem;
+  font-weight: 800;
+}
+
+.metrics-group-row td {
+  background: #f6f7fb;
+  color: #31445f;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center !important;
+}
+
+.metrics-ours-row td {
+  background: #eef4ff;
+}
+
+.metrics-ours-label {
+  color: var(--text) !important;
+  font-weight: 800;
+}
+
+.metrics-best {
+  color: var(--text);
+  font-weight: 800;
+}
+
+.metrics-second {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.12em;
 }
 
 .point-card {
