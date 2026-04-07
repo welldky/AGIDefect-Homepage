@@ -1,0 +1,404 @@
+                        Supplementary Material for AGIDefect-4K
+This document details the methodologies, resources, and analy-              • Fire burning underwater.
+ses that support our main work, providing a more comprehensive              • Penguins appearing in a desert.
+understanding.                                                              • Out-of-season vegetation (e.g., blooming flowers in a snowy
+   This document contains the following core sections:                        field).
+    • Detailed Defect Definitions: A clear articulation of the              • The presence of a shadow without a corresponding light
+      criteria used to classify Structural Defects and Semantic Logic         source.
+      Defects.
+    • Specific Models and Versions: A comprehensive table list-
+                                                                        2   SPECIFIC MODELS AND VERSIONS
+      ing the closed-source image generation models utilized in         The closed-source image generation models used are listed below.
+      our study.
+    • Additional Experimental Results: Quantitative perfor-                   Table 1: Closed-Source Image Generation Models
+      mance of our proposed method implemented with differ-
+      ent Multimodal Large Language Model (MLLM) backbones,                 Vendor         Image Generation Model
+      demonstrating its robustness and generalizability.
+                                                                            OpenAI         gpt-image-1, dalle 3
+    • In-Depth Case Studies: An analysis of our model’s perfor-
+                                                                            Midjourney     mijourny_fast
+      mance on both flawless and defective images, complete with
+                                                                            FLUX AI        flux1.1pro
+      visual examples and comparative analyses against ground
+                                                                            Google         gemini-2.0-flash-preview-image-generation
+      truth annotations.
+                                                                            Ideogram       ideogram_generate_V_1
+    • Detailed Annotation Methodology: An explanation of our
+                                                                            Kling          kling-v1
+      rigorous three-stage subjective experiment, covering data
+                                                                            xAI            grok-3
+      classification, annotation, and the double-check validation
+      process.
+    • Complete Prompts for Dataset Construction and Eval-
+      uation: The precise prompts used to consolidate human             3   RESULTS WITH ADDITIONAL BACKBONES
+      expert annotations and to guide and evaluate the defect           As stated in the main paper, our primary framework AGIDA is
+      description capabilities of MLLMs, along with the detailed        implemented based on Qwen3-VL-4B. To further demonstrate the
+      scoring rubrics used for the assessment.                          robustness and generalizability of our approach across different
+    • Licensing Information: Details regarding the open-access          architectures, we conducted additional experiments utilizing alter-
+      license for the AGIDefect-4K dataset and its components.          native Multimodal Large Language Model (MLLM) backbones.
+   The complete AGIDefect-4K dataset, including all images, de-            Table 2 presents the quantitative results of these experiments. All
+fect masks, and corresponding human-expert annotations, is re-          additional models were fine-tuned under the identical experimental
+leased on https://figshare.com/s/6b3ec7e4a90e12a437ac                   settings described in the main text (e.g., LoRA rank 𝑟 = 32, 𝛼 = 64,
+                                                                        AdamW optimizer, and the same 8:2 train-test split). The results
+1   DEFINITIONS OF DEFECTS                                              indicate that our method maintains consistent effectiveness across
+                                                                        various foundational architectures.
+Defects encompass two primary types: Structural Defects and Se-
+mantic Logic Defects.                                                   Table 2: Performance comparison of AGIDA implemented
+   A Structural Defect is defined as an observable error in an image    with different MLLM backbones.
+where elements violate the fundamental laws of physical space,
+anatomy, or geometry. This definition applies under the precondi-
+                                                                                                   Detection        Explanation
+tion that the image is not explicitly intended as abstract or surreal    Model           Params                                        Rank
+                                                                                                      AUC      Comp.    Prec.   Mean
+art. Specific examples include:
+                                                                         Qwen3-VL-4B        4B        0.00       0.00   0.00    0.00     1
+    • Anatomical errors (e.g., misplaced limbs, incorrect number         Qwen3-VL-2B        2B        0.00       0.00   0.00    0.00     2
+      of fingers).                                                       Qwen2.5-VL-7B      7B        0.00       0.00   0.00    0.00     3
+    • Garbled or nonsensical text.                                       Qwen2.5-VL-3B      3B        0.00       0.00   0.00    0.00     4
+    • Incompletely rendered objects.                                     InternVL3-8B       8B        0.00       0.00   0.00    0.00     5
+    • Contradictory perspectives.                                        InternVL3-2B       2B        0.00       0.00   0.00    0.00     6
+    • Distorted or inconsistent proportions.
+   Semantic Logic Defect is defined as a contradiction arising from
+the combination of elements in an image, violating real-world com-      4   CASE STUDIES
+mon sense or domain-specific knowledge. This definition is appli-       To comprehensively evaluate the capabilities and limitations of
+cable under the precondition that a surreal or fantastical scene was    our proposed model, AGIDA, we conduct in-depth case studies
+not explicitly requested. Specific examples include:                    on both successful instances (Good Cases) and failure instances
+Conference’17, July 2017, Washington, DC, USA
+
+
+                                                                    GOOD CASE
+                     Origin                       Description                       Origin                      Description
+
+                                       Prompt：A violet rose, with its stem                           Prompt：overhead food photography,
+                                       and leaves.                                                   Bibimbap, Korean restaurant
+
+                                          AGIDA:The image is flawless.                                   AGIDA：The image is flawless.
+
+
+
+
+                                        Prompt：A beautiful forest meadow                             Prompt：photograph of a handsome
+                                                                                                     man smiling
+
+                                           AGIDA：The image is flawless.                                  AGIDA：The image is flawless.
+
+
+
+
+                      Origin              GTMask              AGIDA                                 Description
+                 Prompt：A cave with pale walls of skin, visible veins,         GT_description：The image depicts a person with severe
+                 muscles... biological, wet, slimy... octane render...         distortion and deformation, including misaligned limbs and
+                                                                               chaotic facial features... almost entirely stripping it of
+                 GT_description:                                               aesthetic value.
+
+                                                                                  AGIDA: The image depicts a man whose facial
+                                                                               features are distorted... with the eyes appearing as
+                                                                               elongated, irregular shapes. Additionally, the man's right
+                                                                               hand is fused with his left leg...
+
+
+                 Prompt：symmetry!! ... azure dragon in the east in the fog     GT_description: The girl's right hand appears slightly
+                 of magic light, beautiful oriental teen princess... digital   twisted and exhibits structural anomalies...
+                 painting... 8k
+
+                                                                                  AGIDA: ...a noticeable asymmetry in her hands... This
+                                                                               imbalance creates a sense of disharmony in the image...
+
+                                                                                  Claude-Opus-4-6:The image demonstrates excellent
+                                                                                generation quality, free from any visual flaws
+
+
+
+                 Prompt：floral textile A letter
+                                                                               GT_description: The girl's right hand appears slightly
+                                                                               twisted and exhibits structural anomalies...
+
+                                                                                  AGIDA: The woman's right hand exhibits structural
+                                                                               anomalies with subtly fused fingers...
+                                                                                   GPT-5.4:: ...a near-total prompt mismatch... shows a
+                                                                                 stylized woman sitting indoors, not a floral textile...
+
+                Prompt：bird, driving aircraft, wild, anime style
+                                                                                GT_description: ...an airplane with significant structural
+                                                                                anomalies... The wings... are intertwined in a chaotic
+                                                                                manner, and the tail wings also exhibit abnormal
+                                                                                overlapping...
+
+                                                                                   AGIDA: ...a fighter jet with structural anomalies.
+                                                                                The tail section... is incomplete, and the wings are
+                                                                                twisted and deformed...
+
+
+                 Prompt： a white peacock in a lilac tree
+                                                                                GT_description: ...feet positioned unnaturally far apart...
+                                                                                subtle structural anomaly... slight blur in the foreground...
+                                                                                impact on the image's integrity is minimal...
+
+
+                                                                                    AGIDA:...feet positioned unusually wide and splayed
+                                                                                outward... subtle structural flaw in the bird's body...
+                                                                                slight blurring... minimally impact the image's integrity...
+
+                                                                                .
+
+Figure 1: Good Cases: Successful evaluations by AGIDA on both flawless and defective images, demonstrating superior structural
+defect detection and severity alignment compared to baselines.
+Supplementary Material for AGIDefect-4K                                                                  Conference’17, July 2017, Washington, DC, USA
+
+
+(Failed Cases). These cases cover both flawless and defective im-           Hallucination and Lack of Common Sense (Defective): The
+ages, providing a comparative analysis against Ground Truth (GT)          most notable limitation occurs when evaluating Semantic Logic
+annotations and other state-of-the-art Multimodal Large Language          Defects.
+Models (MLLMs).
+                                                                              • Missing Macro-Logic for Micro-Details: In the “sled dog” ex-
+                                                                                ample, the GT correctly identifies a massive logical error: the
+4.1     Successful Cases (Good Cases)                                           dog is facing the sled instead of pulling it, which contradicts
+As illustrated in Figure 1, AGIDA demonstrates exceptional profi-               fundamental real-world physics and common sense. AGIDA
+ciency in both verifying high-quality images and identifying com-               completely misses this macro-level semantic logic defect. In-
+plex defects.                                                                   stead, it employs a “bottom-up” pixel-level scanning strategy,
+   Flawless Image Verification: For high-quality generated im-                  over-fixating on micro-details and hallucinating anatomical
+ages, such as the violet rose, overhead food photography, and the               errors (e.g., “left eye disproportionately small,” “right hind
+forest meadow, AGIDA correctly evaluates them as “flawless,” show-              leg positioned incorrectly”).
+ing robustness against false positives.                                       • Visual Hallucination in Ambiguous Regions: In the “great old
+   Precise Structural Defect Detection: When analyzing defec-                   ones sitting in a bar” example, while AGIDA correctly iden-
+tive images, AGIDA exhibits a high degree of alignment with hu-                 tifies the distorted face, it hallucinates an “incomplete body.”
+man expert annotations (GT), significantly outperforming baseline               Furthermore, it misses the severe background degradation
+MLLMs.                                                                          (blurred glasses on the table) highlighted by the GT.
+
+      • Overcoming Prompt-Bias and Blind Spots: In the “oriental teen        These failure cases highlight a critical bottleneck in current
+        princess” and “floral textile” examples, AGIDA accurately         visual evaluation models: while they are becoming highly adept
+        detects subtle structural anomalies (e.g., asymmetrical hands,    at detecting pixel-level structural distortions, they still lack the
+        fused fingers). In contrast, baseline models exhibit severe       top-down common-sense reasoning required to identify macro-
+        evaluation blind spots. For instance, Claude-Opus-4-6 com-        level semantic and physical contradictions, as well as robust optical
+        pletely misses the twisted hand, declaring the image “free        character recognition (OCR) capabilities for embedded text.
+        from any visual flaws.” Similarly, GPT-5.4 acts merely as a
+        “prompt-checker,” generating a lengthy critique about how
+                                                                          5    SUBJECTIVE EXPERIMENT SETTINGS
+        the image does not match the “floral textile” prompt, while
+        remaining completely blind to the severely deformed hand          Our subjective experiment incorporates a rigorous three-stage pro-
+        in the center of the image. AGIDA successfully avoids this        cess: data classification, data annotation, and double-check
+        prompt-bias, prioritizing genuine visual artifacts.               validation.
+      • Alignment on Defect Severity: In the “white peacock” and              In order to classify each image, consensus among participants
+        “bird driving aircraft” examples, AGIDA perfectly aligns with     is required. If participants unanimously agree that an image has
+        the GT not only in locating the structural flaws (e.g., twisted   defects, it is classified as ’Reject’, indicating that the image has
+        wings, unusually wide feet) but also in assessing their sever-    defects. Conversely, if the image is agreed to be without defects,
+        ity. It correctly identifies the peacock’s flaws as having a      it is classified as ’Accept’. In cases where there is no unanimous
+        “minimal impact,” demonstrating a human-like tolerance for        agreement, expert intervention is needed to provide a definitive
+        subtle imperfections, unlike other VLMs that often over-          judgment. The interface screenshot for classification is illustrated
+        penalize minor defects.                                           in Figure 3, where the ’Accept’ button represents an image deemed
+                                                                          to have no defects, and the ’Reject’ button signifies an image judged
+                                                                          to have defects.
+4.2     Failure Cases (Failed Cases)                                          In the subsequent data annotation stage (detailed in Fig. 4), partic-
+Despite its strong performance, AGIDA still exhibits certain limita-      ipants are required to meticulously examine each image alongside
+tions inherent to current VLM architectures, as shown in Figure 2.        its associated generation prompt. Their primary tasks include iden-
+Analyzing these failures provides valuable insights for future im-        tifying any defects, generating precise mask annotations for these
+provements.                                                               areas using the Segment Anything Model (SAM), and providing
+   False Negatives on Text Rendering and Subtle Logic (Flaw-              detailed descriptions that cover the defect’s location within the
+less): In some cases where GT identifies minor anomalies, AGIDA           image, its classification, and the potential impact on overall image
+classifies the images as “flawless.” For instance, when evaluating        quality.
+garbled text that resembles lights, AGIDA misses the defect, ex-              In the double-check validation phase, we implement a metic-
+posing insufficient capabilities in fine-grained text analysis and        ulous review system utilizing three independent reviewers who
+recognition within images. Similarly, for a flower emerging unnatu-       critically assess all participant annotations, including masks and
+rally from the side of a broken light bulb, AGIDA fails to recognize      descriptions. Our interface for double check, shown in Figure 5, al-
+this subtle violation of real-world physical logic. This indicates that   lows the reviewers to collaborate effectively. Through this interface,
+when anomalies are highly integrated into the overall artistic style      they determine which masks are accurate and can be consolidated
+(e.g., cyberpunk or surrealism) and their visual impact is minimal,       into a unified representation. Similarly, they discern the correct
+AGIDA struggles to detect minor logical inconsistencies and textual       descriptions to retain. During this stage, additional checks are con-
+artifacts.                                                                ducted for cases where there are discrepancies in the masks and
+Conference’17, July 2017, Washington, DC, USA
+
+
+                                                                 FAIED CASE
+               Origin                           Description                      Origin                       Description
+
+                                   GT_description: ...text that appears                             GT_description:...flower emerging
+                                   to be garbled, resembling both lights                            from the left side of a broken light
+                                   and letters... slightly reduces the                              bulb... extra part on top... effect on
+                                   overall quality, yet it integrates well                          the image's quality is minimal.
+                                   with the style...
+                                      AGIDA:The image is flawless.                                     AGIDA：The image is flawless.
+
+
+
+                Origin                GTMask               AGIDA                                   Description
+          Prompt：...a sled dog is pulling a red sled, gliding on a white     GT_description：...clear directional error with the sled
+          snowy ground... with powerful color contrast...                    dog... image shows the sled dog facing directly towards the
+                                                                             sled,which... contradicts the common logic...
+
+                                                                                AGIDA: ...exhibits several notable defects. The
+                                                                             dog's eyes appear unnatural, with the left eye being
+                                                                             disproportionately small and the right eye lacking a
+                                                                             pupil... Additionally, the dog's right hind leg is positioned
+                                                                             incorrectly... which is anatomically incorrect...
+
+
+           Prompt：cute great old ones sitting in a bar, warm color           GT_description: ...dog on the right side... lacking visible
+                                                                             eyes... glasses on the table and the items on the shelf...
+                                                                             blurred into an indistinguishable mass... severely
+                                                                             compromising the image's clarity...
+
+                                                                                  AGIDA: ...dog with significant structural anomalies,
+                                                                              including a distorted face and an incomplete body...
+                                                                              severely impact the overall quality...
+
+
+
+
+Figure 2: Failed Cases: Instances where AGIDA struggles, including missing text rendering artifacts and subtle logical violations,
+hallucinating anatomical details, and failing to recognize severe semantic logic errors (e.g., the reversed sled dog).
+
+
+descriptions provided by participants. This rigorous process en-                   • The final description must be accurate, professional, and faith-
+sures that only precise and consistent annotations are incorporated                  fully represent the original human expert descriptions, preserv-
+into the final dataset, thereby enhancing the overall reliability and                ing their intended meaning.
+quality of the data.                                                               • If multiple descriptions are provided (e.g., from two experts),
+                                                                                     synthesize common points while retaining unique and valuable
+6    PROMPTS FOR DATASET CONSTRUCTION                                                defect information. Ensure conciseness by avoiding redundancy
+                                                                                     but comprehensively cover all critical defects.
+After accurately curating defect descriptions, we utilize GPT-4o to
+                                                                                   • If indicated in the original human expert descriptions, or if a
+consolidate multiple descriptions related to the same image. The
+                                                                                     clear inference can be drawn from the defect’s severity, briefly
+prompt given to GPT-4o for this task is detailed below:
+                                                                                     articulate the impact of these defects on the image’s overall
+   #System Prompt: You are an expert in assessing the quality of AI-
+                                                                                     quality, realism, aesthetic appeal, or thematic expression.
+generated images, specializing in identifying defects. You will receive
+Chinese descriptions of defects within an image, authored by one              Please provide your response strictly in the following JSON format:
+or more human experts, alongside the corresponding AI-generated               {
+image.Your tasks are:                                                         “description": “Your defect description..."
+                                                                              }
+     • Integrate Descriptions: Merge the human experts’ descrip-
+                                                                              Return only this JSON object, without any additional explanations,
+       tions of defects within the image, using the image content for
+                                                                              analyses, or extraneous text.
+       reference.
+                                                                                  #User Prompt: Below is an AI-generated image [image] and its de-
+     • Refine Output: Further refine the consolidated descriptions
+                                                                              fect description(s) [description block] provided by human expert(s).
+       to produce a polished English output.
+                                                                              Based on your observation of the image and the provided human
+Key Considerations:                                                           expert defect description(s), please provide a description.
+Supplementary Material for AGIDefect-4K                                                                     Conference’17, July 2017, Washington, DC, USA
+
+
+
+
+                                                                                  Figure 4: The interface screenshot for annotation
+
+
+                                                                            images while avoiding over-sensitivity to artistic intent. We pro-
+     Figure 3: The interface screenshot for classification
+                                                                            vided the following prompt to instruct the model:
+                                                                            #System Prompt: You are an expert in evaluating the quality of AI-
+Prompt for Defect Category Classification                                   generated images. Your task is to determine whether an image contains
+   To further analyze the distribution of defect types and their rela-      significant defects.
+tion to perceived quality, we utilize GPT-4 to classify the integrated      Step 1: Careful Observation
+defect descriptions into five distinct categories. The prompt used          Examine the image holistically. Consider whether the overall compo-
+for this classification task is detailed below:                             sition, anatomy, physics, and logic appear reasonable and coherent.
+   #System Prompt: You are an expert data analyst specializing in
+image defect categorization. Your task is to classify a given image         Step 2: Defect Identification (if applicable)
+defect description into exactly ONE of the following five categories:       If you notice potential anomalies, evaluate whether they constitute
+                                                                            genuine defects:
+     • body: Anatomical errors related to the human body (e.g., dis-
+       torted limbs, extra fingers, awkward postures), excluding the             • Structural Defects: Clearly malformed body parts, impossi-
+       face.                                                                       ble anatomy (e.g., six fingers, missing limbs), severely distorted
+     • faces: Anomalies specifically located on human faces (e.g.,                 objects.
+       asymmetrical eyes, garbled teeth, distorted facial structures).           • Logical Defects: Obvious violations of physical laws or com-
+     • animals: Structural or anatomical defects occurring in ani-                 mon sense that are clearly unintentional.
+       mals.                                                                Do not flag as defects:
+     • objects: Incomplete rendering, structural anomalies, or distor-           • Minor stylistic variations or artistic exaggeration.
+       tions in inanimate objects, texts, or background elements.                • Subtle proportion differences that don’t significantly impact
+     • logical_defects: Semantic contradictions, violations of physi-              visual quality.
+       cal laws, or common-sense errors (e.g., floating items, incorrect         • Features that could be intentional artistic choices.
+       shadows, fire underwater).                                           Step 3: Prompt Verification
+Rule: If a description mentions multiple issues, classify it based on the   If defects were identified, check whether the prompt explicitly describes
+primary or most severely described defect.                                  or justifies them. Intentional features described in the prompt are not
+   Return ONLY a valid JSON object in the exact format: {“category":        defects.
+“category_name"}. Do not include markdown code blocks or any other
+                                                                            Step 4: Final Judgment
+text.
+                                                                            Provide your assessment. Be conservative — when uncertain, lean
+   #User Prompt: Please classify the following defect description: [de-
+                                                                            toward classifying the image as not defective.
+fect description]
+                                                                            Provide your assessment in plain JSON format:
+7 PROMPTS FOR EXPERIMENTS                                                   {
+                                                                            “Defective": [true/false],
+7.1 Prompts for MLLM Defect Description                                     “Description": []
+    Generation                                                              }
+To assess the defect description capabilities of multimodal large lan-      If no defects are found, the “Description" field should remain an empty
+guage models, we developed a framework centered around a com-               list []. If defects are present, provide a single string entry within the
+prehensive evaluation process, aimed at guiding the model in craft-         “Description" list that describes all identified defects in detail, covering
+ing accurate defect assessments. Our objective was to prompt the            their locations and visual appearance, and concluding with how they
+MLLM to generate detailed descriptions of defects in AI-generated           collectively impact the overall quality of the image.
+Conference’17, July 2017, Washington, DC, USA
+
+
+
+
+                                                Figure 5: The interface screenshot for double check
+
+
+Example 1 (No defect):                                                      human interpretations. Below is a structured approach to this eval-
+Prompt: a golden retriever sitting in a sunny park                          uation:
+{                                                                             #System Prompt: You are an expert in evaluating AI-generated
+“Defective": false,                                                         images for detecting visual defects. Your expertise lies in pinpointing
+“Description": []                                                           two main types of defects:
+}                                                                              (1) Structural Defects: Violations of basic physical space rules
+Example 2 (With defects):                                                          (e.g., misaligned limbs, missing/extra fingers, incomplete key
+Prompt: two mouse wearing chefs’ hats                                              objects).
+{                                                                              (2) Semantic Logic Defects: Combinations that defy common
+“Defective": true,                                                                 sense or domain knowledge and are not intended by the prompt
+“Description": [                                                                   (e.g., floating objects without support, physically impossible
+“The image depicts two mice with several significant anatomical ab-                arrangements).
+normalities. Both mice have severely malformed toes, appearing exces-
+                                                                               Prompts for Defect Description Completeness: Evaluate if the de-
+sively numerous and disorganized. The mouse on the left exhibits an
+                                                                            scription [MLLM DESC] encompasses all visual defects mentioned in
+unusual mouth shape, while the mouse on the right is missing its right
+                                                                            the reference description [GOLDEN DESC]. Assess solely on whether
+ear. Additionally, there is an extra pair of feet floating unsupported
+                                                                            each defect in the reference is at least acknowledged in the output,
+between the two mice. These combined anomalies greatly diminish the
+                                                                            without evaluating the description’s accuracy, detail, or relevance.
+overall quality, coherence, and aesthetic appeal of the image, making
+                                                                               Rating System for Completeness:
+it appear quite odd."
+]                                                                               • Score 2: All or nearly all defects present in the reference are
+}                                                                                 mentioned.
+                                                                                • Score 1: Some, but not all, defects from the reference are men-
+#User Prompt: For each image [image] analyzed, the MLLM (con-
+                                                                                  tioned.
+figured with the system prompt above) then receives the following
+                                                                                • Score 0: None of the defects from the reference are mentioned.
+input:
+Original generation prompt [generation prompt]                                 Please only provide the result in the following JSON format: {“Score":[]}.
+Please assess this image [image] for defects based on the provided          Reference Description [GOLDEN DESC] MLLM Description [MLLM
+prompt.                                                                     DESC].
+
+                                                                               Prompts for Defect Description Precision: The precision metric
+7.2     Prompts for Evaluating LLMs                                         measures descriptions in terms of defect details (location, type, sever-
+In this part of the evaluation, we focus on assessing the MLLMs             ity) and penalizes descriptions with controversial or contradictory
+capability to identify and describe defects. Utilizing a GPT-assisted       information compared to the reference.
+evaluation strategy, we systematically compare LLM-generated                   Rating System for Precision:
+descriptions against human-annotated benchmarks, concentrating                  • Score 2: Minor inconsistencies or less controversial details com-
+on two critical criteria: Completeness and Precision.                             pared to the reference; generally consistent.
+   The evaluation’s goal is to confirm that LLM-generated defect                • Score 1: Major inconsistencies or more controversial details
+descriptions are both complete and accurate, aligning with expert                 than the reference; noticeable contradictions.
+Supplementary Material for AGIDefect-4K                                                                     Conference’17, July 2017, Washington, DC, USA
+
+
+     • Score 0: Severe contradictions or completely inaccurate details          images exhibiting defective masks, the prompts used for their gen-
+       compared to the reference; highly controversial.                         eration (where applicable), and the corresponding detailed human-
+   Please only provide the result in the following JSON format: {“Score":[]}.   annotated defect descriptions.
+Reference Description [GOLDEN DESC] MLLM Description [MLLM                         All human-rated data (our defect annotations) will be made
+DESC].                                                                          available in its entirety, presented in a carefully organized and
+                                                                                anonymized format. This commitment to open access is intended to
+8    LICENSE                                                                    maximize transparency and foster widespread academic progress
+We are committed to facilitating maximum research reproducibil-                 in the fields of AI-generated image analysis, defect detection, and
+ity and community engagement by fully and publicly releasing all                multimodal foundation model evaluation. We hope our endeavour
+core components of the AGIDefect-4K dataset. This includes all                  will significantly support and accelerate academic advancements
+                                                                                and the development of innovative solutions by providing the com-
+                                                                                munity with this comprehensive resource.
+

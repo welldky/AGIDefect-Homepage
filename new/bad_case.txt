@@ -1,0 +1,33 @@
+                                                     FAIED CASE
+    Origin                       Description                         Origin                       Description
+
+                      GT_description: ...text that appears                              GT_description:...flower emerging
+                      to be garbled, resembling both lights                             from the left side of a broken light
+                      and letters... slightly reduces the                               bulb... extra part on top... effect on
+                      overall quality, yet it integrates well                           the image's quality is minimal.
+                      with the style...
+                         AGIDA:The image is flawless.                                      AGIDA：The image is flawless.
+
+
+
+    Origin              GTMask                AGIDA                                    Description
+Prompt：...a sled dog is pulling a red sled, gliding on a white   GT_description：...clear directional error with the sled
+snowy ground... with powerful color contrast...                  dog... image shows the sled dog facing directly towards the
+                                                                 sled,which... contradicts the common logic...
+
+                                                                    AGIDA: ...exhibits several notable defects. The
+                                                                 dog's eyes appear unnatural, with the left eye being
+                                                                 disproportionately small and the right eye lacking a
+                                                                 pupil... Additionally, the dog's right hind leg is positioned
+                                                                 incorrectly... which is anatomically incorrect...
+
+
+Prompt：cute great old ones sitting in a bar, warm color          GT_description: ...dog on the right side... lacking visible
+                                                                 eyes... glasses on the table and the items on the shelf...
+                                                                 blurred into an indistinguishable mass... severely
+                                                                 compromising the image's clarity...
+
+                                                                      AGIDA: ...dog with significant structural anomalies,
+                                                                  including a distorted face and an incomplete body...
+                                                                  severely impact the overall quality...
+

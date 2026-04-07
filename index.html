@@ -3,399 +3,252 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="AGIDefect-4K - Xiangfei Sheng">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
+  <meta name="title" content="AGIDefect-4K">
+  <meta name="description" content="AGIDefect-4K is a richly annotated benchmark for AI-generated image defect detection, localization, explanation, and quality assessment.">
+  <meta name="keywords" content="AI-generated image, defect detection, image localization, multimodal large language model, AGIDefect-4K">
   <meta name="author" content="Xiangfei Sheng, Weidong Zou, Tianjiao Gu, Zhichao Yang, Pengfei Chen, Leida Li">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
+  <title>AGIDefect-4K: A Richly Annotated Dataset for AI-Generated Image Defect Detection, Localization and Explanation</title>
 
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>AGIDefect-4K: A Richly Annotated Dataset for AI-Generated Image Defect Detection, Localization and Explanation - Xiangfei Sheng</title>
-
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/brave-AGIDefect.ico">
-  <link rel="apple-touch-icon" href="static/images/brave-AGIDefect.ico">
-
-  <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="static/css/fontawesome.all.min.css"></noscript>
 
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  </noscript>
-
-  <!-- Defer non-critical JavaScript -->
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "AGIDefect-4K: A Richly Annotated Dataset for AI-Generated Image Defect Detection, Localization and Explanation",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "Xiangfei Sheng",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "Xidian University"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Weidong Zou",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "Xidian University"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Tianjiao Gu",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "Xidian University"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Zhichao Yang",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "Xidian University"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Pengfei Chen",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "Xidian University"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Leida Li",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "Xidian University"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
 </head>
 <body>
-
-
-  <!-- Scroll to Top Button -->
   <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Add more works here -->
-      </div>
-    </div>
-  </div>
-
-  <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
+  <main>
+    <section class="hero-block">
       <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-2 publication-title">AGIDefect-4K: A Richly Annotated Dataset for AI-Generated Image Defect Detection, Localization and Explanation</h1>
-            <!-- <div class="acceptance-badge">
-              <span class="tag is-large is-info is-light">
-                <span class="icon"><i class="fas fa-award"></i></span>
-                <span></span>
-              </span>
-            </div> -->
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="https://github.com/sxfly99" target="_blank">Xiangfei Sheng</a><sup>1†</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://github.com/ZzWDlyy" target="_blank">Weidong Zou</a><sup>1†</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://github.com/welldky" target="_blank">Tianjiao Gu</a><sup>1</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://github.com/yzc-ippl/" target="_blank">Zhichao Yang</a><sup>1</sup>,
-              </span>
-              <br>
-              <span class="author-block">
-                <a href="https://faculty.xidian.edu.cn/cpf/" target="_blank">Pengfei Chen</a><sup>1</sup>,
-              </span>
-              <span class="author-block">
-                  <a href="https://web.xidian.edu.cn/ldli/" target="_blank">Leida Li</a><sup>1,2*</sup>
-              </span>
-            </div>
+        <p class="hero-tag">ACM MM 2026 • Reviewer Page</p>
+        <h1 class="hero-title">AGIDefect-4K</h1>
+        <p class="hero-subtitle">A richly annotated dataset for AI-generated image defect detection, localization, explanation, and quality assessment.</p>
+        <p class="hero-summary">
+          This page is intentionally compact for fast review: key numbers first, core evidence second, mandatory case-study PDFs third, and resources at the end.
+        </p>
+        <p class="hero-authors">
+          Xiangfei Sheng, Weidong Zou, Tianjiao Gu, Zhichao Yang, Pengfei Chen, Leida Li
+        </p>
 
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                  <sup>1</sup>School of Artificial Intelligence, Xidian University<br>
-                  <sup>2</sup>State Key Laboratory of Electromechanical Integrated Manufacturing of
-                  High-Performance Electronic Equipments, Xidian University<br>
-                  <sup>†</sup>Equal contribution, <sup>*</sup>Corresponding author
-              </span>
-            </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <span class="link-block">
-                      <a href="#" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-database"></i>
-                      </span>
-                      <span>Dataset</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="#" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-            </div>
-          </div>
+        <div class="hero-actions">
+          <a href="new/ACM_Supplementary.pdf" target="_blank" rel="noopener noreferrer" class="main-btn main-btn-primary">
+            <i class="fas fa-download"></i>
+            <span>Supplementary PDF</span>
+          </a>
+          <a href="https://drive.google.com/drive/folders/1UI1II_tlirN5NyRrD8-vdmtW1e77ckXD?usp=drive_link" target="_blank" rel="noopener noreferrer" class="main-btn">
+            <i class="fas fa-database"></i>
+            <span>Dataset</span>
+          </a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            <!-- TODO: Add abstract content here -->
-            Abstract content coming soon...
-          </p>
+    <section class="section section-light" id="quick-facts">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Quick Facts</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Value</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dataset size</td>
+                <td>4,000 images</td>
+                <td>Balanced for both defect discovery and false-positive control</td>
+              </tr>
+              <tr>
+                <td>Model coverage</td>
+                <td>15 generators</td>
+                <td>Includes both open-source and proprietary systems</td>
+              </tr>
+              <tr>
+                <td>Defective / flawless</td>
+                <td>3,000 / 1,000</td>
+                <td>Supports robust binary diagnosis</td>
+              </tr>
+              <tr>
+                <td>Annotation reliability</td>
+                <td>92.3% initial agreement</td>
+                <td>Multi-annotator workflow with review</td>
+              </tr>
+              <tr>
+                <td>Annotation granularity</td>
+                <td>4 levels</td>
+                <td>Detection, localization mask, explanation, quality score</td>
+              </tr>
+              <tr>
+                <td>Localization difficulty</td>
+                <td>&gt;85% defects &lt;5% area</td>
+                <td>Most defects are tiny and localized</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
+    </section>
 
-<br><br>
-<!-- Main content sections -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered has-text-centered">
-        <h2 class="title is-3">Dataset Overview</h2>
-      </div>
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <!-- <img src="static/images/overview.png" alt="Dataset overview" loading="lazy" style="width: 100%; height: auto; margin: 0 auto; display: block;"/> -->
-        <h2 class="subtitle has-text">
-          Dataset overview content coming soon...
-        </h2>
-      </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End content section -->
-
-<!-- Image carousel -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <br><br>
-      <div class="columns is-centered has-text-centered">
-        <h2 class="title is-3">Methodology</h2>
-      </div>
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <h2 class="subtitle has-text">
-          Methodology content coming soon...
-        </h2>
-      </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-<br><br>
-<!-- Results section -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered has-text-centered">
-        <h2 class="title is-3">Results</h2>
-      </div>
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <h2 class="subtitle has-text">
-          Results content coming soon...
-        </h2>
-      </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End results section -->
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <!-- TODO: Add BibTeX citation -->
-      <!-- <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={AGIDefect-4K: A Richly Annotated Dataset for AI-Generated Image Defect Detection, Localization and Explanation},
-  author={Xiangfei Sheng and Weidong Zou and Tianjiao Gu and Zhichao Yang and Pengfei Chen and Leida Li},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre> -->
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content has-text-centered">
-          <p>
-            &copy; 2024 AGIDefect Team, BRAVE Lab, Xidian University. All rights reserved.
-            <br>
-            Website maintained by <a href="https://github.com/sxfly99" target="_blank">Xiangfei Sheng</a>.
-          </p>
+    <section class="section" id="key-points">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Key Points For Review</h2>
+        <div class="points-grid">
+          <article class="point-card">
+            <h3>What is new</h3>
+            <ul>
+              <li>Unified benchmark for defect detection, localization, explanation, and quality scoring.</li>
+              <li>Covers both open-source and proprietary image generators.</li>
+              <li>Designed with multi-annotator verification for reliability.</li>
+            </ul>
+          </article>
+          <article class="point-card">
+            <h3>Why it matters</h3>
+            <ul>
+              <li>Most defects are small and localized, making this task harder than coarse AGI quality scoring.</li>
+              <li>Failure cases show current models still miss text artifacts and common-sense contradictions.</li>
+              <li>The dataset is directly useful for both benchmarking and supervised fine-tuning.</li>
+            </ul>
+          </article>
+          <article class="point-card metrics-card">
+            <h3>Main performance signal</h3>
+            <div class="table-wrap">
+              <table class="metrics-table metrics-table-models">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Model</th>
+                    <th colspan="1">Detection</th>
+                    <th colspan="3">Explanation</th>
+                  </tr>
+                  <tr>
+                    <th>AUC</th>
+                    <th>Comp.</th>
+                    <th>Prec.</th>
+                    <th>Mean</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Qwen3-VL-4B</td>
+                    <td>0.65</td>
+                    <td>0.89</td>
+                    <td>0.95</td>
+                    <td>0.92</td>
+                  </tr>
+                  <tr>
+                    <td>Qwen3-VL-2B</td>
+                    <td>0.68</td>
+                    <td>0.88</td>
+                    <td>0.93</td>
+                    <td>0.90</td>
+                  </tr>
+                  <tr>
+                    <td>Qwen2.5-VL-7B</td>
+                    <td>0.69</td>
+                    <td>0.87</td>
+                    <td>0.93</td>
+                    <td>0.90</td>
+                  </tr>
+                  <tr>
+                    <td>InternVL3-8B</td>
+                    <td>0.72</td>
+                    <td>0.94</td>
+                    <td>0.91</td>
+                    <td>0.93</td>
+                  </tr>
+                  <tr>
+                    <td>InternVL3-2B</td>
+                    <td>0.68</td>
+                    <td>0.88</td>
+                    <td>0.92</td>
+                    <td>0.90</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
         </div>
       </div>
+    </section>
+
+    <section class="section section-light" id="cases">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Case Study PDFs</h2>
+        <p class="section-note">Static image preview only. Both images use the same display width for alignment.</p>
+        <div class="case-static-list">
+          <article class="case-static-card">
+            <div class="pdf-head">
+              <h3>Good Cases</h3>
+              <div class="pdf-actions">
+                <a href="new/good_case.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+                <a href="new/good_case.pdf" download>Download</a>
+              </div>
+            </div>
+            <img
+              class="case-static-image"
+              src="new/good_case_01.png"
+              alt="Good case static preview"
+              loading="lazy"
+            >
+          </article>
+
+          <article class="case-static-card">
+            <div class="pdf-head">
+              <h3>Failed Cases</h3>
+              <div class="pdf-actions">
+                <a href="new/bad_case.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+                <a href="new/bad_case.pdf" download>Download</a>
+              </div>
+            </div>
+            <img
+              class="case-static-image"
+              src="new/bad_case_01.png"
+              alt="Bad case static preview"
+              loading="lazy"
+            >
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resources">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Resources</h2>
+        <div class="resource-row">
+          <a href="new/ACM_Supplementary.pdf" target="_blank" rel="noopener noreferrer" class="resource-btn">
+            <i class="fas fa-paperclip"></i>
+            <span>Download ACM_Supplementary.pdf</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="bibtex">
+      <div class="container is-max-desktop">
+        <!-- <div class="bib-header">
+          <h2 class="section-title">BibTeX</h2>
+        </div> -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container is-max-desktop has-text-centered">
+      <p>
+        © 2026 AGIDefect Team, BRAVE Lab, Xidian University.
+        <br>
+        Maintained by <a href="https://github.com/sxfly99" target="_blank" rel="noopener noreferrer">Xiangfei Sheng</a>.
+      </p>
     </div>
-  </div>
-</footer>
-
-   <!-- JavaScript: Bulma Carousel Plugin -->
-
-   <!-- JavaScript: Initialization Script -->
-   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      bulmaCarousel.attach('#js-viz-carousel', {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        pagination: true,
-        loop: true,
-        autoplay: true,
-        autoplaySpeed: 3000
-      });
-    });
-  </script>
-
-  </body>
-  </html>
+  </footer>
+</body>
+</html>
