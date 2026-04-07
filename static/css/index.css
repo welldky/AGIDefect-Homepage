@@ -189,6 +189,10 @@ a {
   padding-bottom: 0.45rem;
 }
 
+.metrics-table-models .metrics-explanation-head {
+  text-align: center;
+}
+
 .metrics-table-models thead tr:last-child th {
   padding-top: 0.45rem;
 }
